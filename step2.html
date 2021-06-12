@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Step 2</title>
+</head>
+
+<body>
+    <form class="form form2">
+        <p class="title">Регистрация, шаг 2</p>
+        <input placeholder="имя"  type="text" name="name" class="form-field name">
+        <input placeholder="фамилия"  type="text" name="surname" class="form-field surname">
+        <input placeholder="возраст"  type="number" name="age" class="form-field age">
+        <select placeholder="город" name="city" id="city" class="form-field city" required>
+            <option value="" default disabled selected>город</option>
+            <option value="bishkek">Bishkek</option>
+            <option value="kant">Kant</option>
+            <option value="tokmok">Tokmok</option>
+        </select>
+        <input class="check form-field" value="0" type="checkbox" name="checkbox">
+        <label class="check-label" name="checkbox" for="checkbox">Прочитал и согласен с правилами сообщества</label>
+        <class class="error-text"></class>
+        <input type="submit" value="Готово" class="validate-btn">
+    </form>
+
+    <script>
+
+        //Я посчитал что эта реализация хуже предыдущей
+        // const form = document.querySelector(".form2");
+        // const error = form.querySelector(".error-text");
+        // error.textContent = "no errors";
+        // form.addEventListener("submit", function (event) {
+        //     event.preventDefault();
+        //     const select = form.querySelector(".city").value;
+        //     console.log(select);
+        // });
+
+        // function checkName(event) {
+        //     if (!event.value) {
+        //         error.textContent = (`${event.name} errors`);
+        //     }
+        // }
+        const form = document.querySelector(".form");
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+            const textInput = form.querySelectorAll(".form-field");
+            const errorText = form.querySelector(".error-text");
+            const check = form.querySelector(".check"); 
+            console.log(check); 
+            let isFormValid = true;
+            console.clear();
+            for (let i = 0; i < textInput.length; i++) {
+                const element = textInput[i];
+                const name = element.name;
+                errorText.innerText = `no errors`;
+                if (!element.value || element.value.trim().length == 0 ) {
+                    errorText.textContent = `${name} not value`;
+                    isFormValid = false;
+                    break;
+                }
+            }
+            if(!check.checked && isFormValid === true){
+                    errorText.textContent = `checkbox not value`;
+                    isFormValid = false;
+                }
+            if (isFormValid === true) {
+                errorText.textContent = "Данные успешно введены";
+            }
+
+
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" class="form">
+        <p class="title">Регистрация</p>
+        
+        <input placeholder="Логин" type="text" name="login" class="form-field login">
+        <input placeholder="пароль"type="password" name="password" class="form-field password">
+        <input placeholder="повторить пароль" type="password" name="passwordconfirmation" class="form-field passwordconfirmation">
+        <p class="error-text">Ошибка</p>
+        <input type="submit" value="Далее" class="validate-btn">
+    </form>
+
+
+    <script>
+        const form = document.querySelector(".form");
+        
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+            const login = form.querySelector(".login");
+            const password = form.querySelector(".password");
+            const confPassword = form.querySelector(".passwordconfirmation");
+            const textInput = form.querySelectorAll(".form-field");
+            const errorText = form.querySelector(".error-text");
+            let isFormValid = true;
+            console.clear();
+
+
+            for (let i = 0; i < textInput.length; i++) {
+                const element = textInput[i];
+                const name = element.name;
+                errorText.innerText = `no errors`;
+                if (!element.value || element.value.trim().length == 0) {
+                    errorText.textContent = `${name} not value`;
+                    isFormValid = false;
+                    break;
+                }
+                if (password.value !== confPassword.value) {
+                    errorText.textContent = `password dont match`;
+                    isFormValid = false;
+                }
+            }
+            if (isFormValid === true) {
+                window.location = "./step2.html";
+            }
+
+
+        });
+    </script>
+</body>
+
+</html>

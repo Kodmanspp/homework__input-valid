@@ -1,0 +1,64 @@
+body{
+    display: flex;
+    justify-content: center;
+
+}
+::-webkit-input-placeholder { 
+    color:    black;
+ }
+.city{
+    -webkit-appearance: none;
+}
+.form{
+    width: 220px;
+    height: 330px;
+    border: 1px solid black;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+.form-field{
+    width: 150px;
+    height: 25px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+.error-text{
+    font-size: 15px;
+    font-weight: bold;
+    color: rgb(158, 12, 12);
+}
+.validate-btn{
+    margin-top: 10px;
+    width: 150px;
+    height: 35px;
+    border: none;
+    color: white;
+    background-color: rgb(151, 149, 149);
+}
+.form2{
+    width: 230px;
+   height: 400px;
+}
+option[default] {
+    display: none;
+}
+.city{
+    width: 160px;
+    height: 30px;
+}
+.check{
+    align-self: start;
+    margin-left: 35px;
+    width: 15px;
+    height: 15px;
+    background: black;
+    display: inline-flex;
+}
+.check-label{
+    margin-left: 60px;
+    margin-top: -30px;
+    margin-bottom: 10px;
+    display: inline;
+    font-size: 14px;
+}
